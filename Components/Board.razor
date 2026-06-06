@@ -1,3 +1,5 @@
+@inject GameState State
+
 <HeadContent>
     <style>
         :root {
@@ -16,8 +18,25 @@
             </span>
         }
     </div>
+    @for (var i = 0; i < 42; i++)
+    {
+        <span class="@pieces[i]"></span>
+    }
 </div>
 
 @code {
+    private string[] pieces = new string[42];
 
+    private void PlayPiece(byte col)
+    {
+        var player = State.PlayerTurn;
+        var turn = State.CurrentTurn;
+        var landingRow = State.PlayPiece(col);
+        pieces[turn] = $"player{player} col{col} drop{landingRow}";
+    }
+
+    protected override void OnInitialized()
+    {
+        State.ResetBoard();
+    }
 }
