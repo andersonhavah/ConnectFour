@@ -177,11 +177,45 @@ public class GameState
 
     }
 
+    /// <summary>
+    /// Consecutive wins for Player 1 in the current session
+    /// </summary>
+    public int Player1Wins { get; private set; } = 0;
+
+    /// <summary>
+    /// Consecutive wins for Player 2 in the current session
+    /// </summary>
+    public int Player2Wins { get; private set; } = 0;
+
     public List<int> TheBoard { get; private set; } = new List<int>(new int[42]);
 
+    /// <summary>
+    /// Resets the game board for a new game
+    /// </summary>
     public void ResetBoard()
     {
         TheBoard = new List<int>(new int[42]);
+    }
+
+    /// <summary>
+    /// Records a win for the specified player
+    /// </summary>
+    /// <param name="player">1 for Player 1, 2 for Player 2</param>
+    public void RecordWin(int player)
+    {
+        if (player == 1)
+            Player1Wins++;
+        else if (player == 2)
+            Player2Wins++;
+    }
+
+    /// <summary>
+    /// Resets the win counters for both players
+    /// </summary>
+    public void ResetStats()
+    {
+        Player1Wins = 0;
+        Player2Wins = 0;
     }
 
     private byte ConvertLandingSpotToRow(int landingSpot)
