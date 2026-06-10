@@ -273,3 +273,25 @@ span.container {
         transform: translateY(20.4em)
     }
 }
+
+.stats-display {
+    display: flex;
+    gap: 2em;
+    margin-bottom: 1em;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.player1-stats {
+    color: var(--player1);
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0.5em 1em;
+    border-radius: 4px;
+}
+
+.player2-stats {
+    color: var(--player2);
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0.5em 1em;
+    border-radius: 4px;
+}
